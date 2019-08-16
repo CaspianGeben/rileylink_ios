@@ -364,7 +364,7 @@ public class PodCommsSession {
         let bolusScheduleCommand = SetInsulinScheduleCommand(nonce: podState.currentNonce, deliverySchedule: bolusSchedule)
 
         // 17 0d 00 0064 0001 86a0000000000000
-        let bolusExtraCommand = BolusExtraCommand(units: insertionBolusAmount, byte2: 0, unknownSection: Data(hexadecimalString: "000186a0")!)
+        let bolusExtraCommand = BolusExtraCommand(acknowledgementBeep: true, completionBeep: true, units: insertionBolusAmount, byte2: 0, unknownSection: Data(hexadecimalString: "000186a0")!)
         let _: StatusResponse = try send([bolusScheduleCommand, bolusExtraCommand])
         podState.advanceToNextNonce()
     }
