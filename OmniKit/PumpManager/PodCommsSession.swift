@@ -408,7 +408,7 @@ public class PodCommsSession {
         }
         
         // 17 0d 00 0064 0001 86a0000000000000
-        let bolusExtraCommand = BolusExtraCommand(units: units)
+        let bolusExtraCommand = BolusExtraCommand(acknowledgementBeep: true, completionBeep: true, units: units)
         do {
             // Between bluetooth and the radio and firmware, about 1.2s on average passes before we start tracking
             let commsOffset = TimeInterval(seconds: -1.5)
